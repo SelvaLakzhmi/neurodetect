@@ -1,36 +1,188 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧠 Alzheimer’s Detector Project  
+## 📘 Setup & Execution Guide
 
-## Getting Started
+---
 
-First, run the development server:
+## 📦 Project Setup
 
+1. Download and extract the project ZIP file.
+2. Place it in your desired directory.
+
+Example:
+D:\Projects\Alzheimer's Detector\
+
+---
+
+## 🌐 Run the Frontend (Next.js)
+
+### Prerequisites
+- Install Node.js (LTS recommended)
+
+### Verify Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node --version
+npm --version
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Steps
+```bash
+cd "D:\Projects\Alzheimer's Detector\Web App"
+npm install
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Access Application
+http://localhost:3000/
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🤖 Run the Backend (FastAPI AI Service)
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
+- Install Python 3.10.x
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Verify Installation
+```bash
+python --version
+pip --version
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Steps
+```bash
+cd "D:\Projects\Alzheimer's Detector\Backend Service"
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app:app --host 0.0.0.0 --port 8000
+```
 
-## Deploy on Vercel
+### API URL
+http://localhost:8000/
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Swagger UI
+http://localhost:8000/docs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🔗 Connect Frontend & Backend
+
+### Steps
+1. Open the Web Application:
+   http://localhost:3000/
+
+2. Navigate to:
+   Settings → Integration
+
+3. Enter Backend URL:
+   http://localhost:8000
+
+4. Save the configuration.
+
+### Notes
+- Ensure backend is running before testing.
+- For remote server:
+  http://<your-ip>:8000
+
+---
+
+## 📧 Email Configuration
+
+### Steps
+1. Open Web Application:
+   http://localhost:3000/
+
+2. Navigate to:
+   Settings → Email Configuration
+
+3. Enter:
+   - Service Email → Your Gmail ID  
+   - Password → Google App Password
+
+4. Save settings.
+
+---
+
+## 🔐 Generate Google App Password
+
+⚠️ Gmail password will NOT work. Use App Password.
+
+### Prerequisite
+- Enable 2-Step Verification
+
+### Steps
+1. Open:
+   https://myaccount.google.com/
+
+2. Go to:
+   Security → 2-Step Verification  
+   (Enable if not already)
+
+3. Then go to:
+   Security → App Passwords
+
+4. Select:
+   - App → Mail  
+   - Device → Windows Computer / Other
+
+5. Click Generate
+
+6. Copy the 16-character password:
+   xxxx xxxx xxxx xxxx
+
+7. Paste it into your application password field.
+
+### Notes
+- Do NOT use your Gmail password
+- Keep App Password secure
+- Regenerate if email fails
+
+---
+
+## 🧪 Testing
+
+- Open frontend → Upload MRI / trigger prediction
+- Check API response via UI or Swagger
+- Test email functionality
+
+---
+
+## ⚠️ Troubleshooting
+
+### Port Already in Use
+```bash
+npm run dev -- -p 3001
+uvicorn app:app --port 8001
+```
+
+### Node Modules Issue
+```bash
+npm install
+```
+
+### Python Dependency Issue
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Uvicorn Not Found
+```bash
+pip install uvicorn
+```
+
+---
+
+## 📊 Project Overview
+
+| Component | Technology | Port |
+|----------|----------|------|
+| Frontend | Next.js  | 3000 |
+| Backend  | FastAPI  | 8000 |
+
+---
+
+## ✅ Final Notes
+
+- Always start Backend first, then Frontend
+- Ensure correct API URL is configured
+- Keep dependencies updated
